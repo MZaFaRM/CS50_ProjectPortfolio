@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <p style="font-size: 7rem">HISTORY</p>
+    </div>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Purchased on</th>
+            </tr>
+        </thead>
+        {% if details is not defined %}
+            <p colspan = "5" class = "lead">No purchase history to show</p>
+        {% else %}
+        <tbody>
+            {% for data in details %}
+                {% if data["shares"] > 0 %}
+                <tr style="color: green;">
+                {% else %}
+                <tr style="color: red;">
+                {% endif %}
+                    <td>{{ data["symbol"] }}</td>
+                    <td>{{ data["shares"] }}</td>
+                    <td>{{ "$%.2f"|format(data["price"]) }}</td>
+                    <td>${{ data["total"] }}</td>
+                    <td>{{ data["time"] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan = "5" class = "lead"> No stock shares to show</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        {% endif %}
+    </table>
+
+{% endblock %}

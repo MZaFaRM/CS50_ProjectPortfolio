@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    account
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <p style="font-size: 7rem">Account</p>
+    </div>
+    {% if balance is undefined %}
+        <p class="lead">Balance: $0</p>
+    {% else %}
+        <p class="lead">Balance: {{ "$%.2f"|format(balance) }}</p>
+    {% endif %}
+
+    <form action="/account" method="post">
+        <div class="mb-3">
+            <div class="mb-3">
+                <label for="balance">Transfer amount</label>
+            </div>
+            <input class="form-control mx-auto w-auto" id="balance" name="balance" placeholder="Input Amount" type="number"></div>
+            <button class="btn btn-primary" type="submit">Transfer</button>
+        </form>
+    {% endblock %}
