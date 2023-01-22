@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    quoted
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <p style="font-size: 7rem">QUOTE</p>
+    </div>
+
+    <p>A share of {{ symbol["name"] }} ({{ symbol["symbol"] }}) costs {{ symbol["price"] | usd }}.</p>
+{% endblock %}

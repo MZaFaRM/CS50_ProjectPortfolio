@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    sell
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <p style="font-size: 7rem">SELL</p>
+    </div>
+    {% if symbols|length == 0 %}
+        <p class = "lead">No stock shares to sell</p>
+    {% else %}
+        <form action="/sell" method = "POST">
+            <label for="sell">Choose a Symbol:</label>
+            <select name="symbol" id="sell">
+                <option value="none" selected disabled hidden>Symbol</option>
+                {% for symbol in symbols %}
+                <option value= {{ symbol }}>{{ symbol }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Shares" type="number">
+            </div>
+            <button class="btn btn-primary" type="submit">Sell</button>
+        </form>
+    {% endif %}
+
+{% endblock %}

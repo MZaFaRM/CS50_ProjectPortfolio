@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            function right(){
+                document.getElementById("right").style.backgroundColor = "#32de84";
+                document.getElementById("validation").innerHTML = "Correct!";
+            }
+            function wrong(){
+                document.getElementById("wrong").style.backgroundColor = "#E52B50";
+                document.getElementById("validation").innerHTML = "Incorrect";
+            }
+            function wrong2(){
+                document.getElementById("wrong2").style.backgroundColor = "#E52B50";
+                document.getElementById("validation").innerHTML = "Incorrect";
+            }
+            function wrong3(){
+                document.getElementById("wrong3").style.backgroundColor = "#E52B50";
+                document.getElementById("validation").innerHTML = "Incorrect";
+            }
+            function submit(){
+                var answer = document.getElementById("box").value;
+                var correct = "Neil Armstrong";
+
+                answer = answer.toUpperCase();
+                correct = correct.toUpperCase();
+
+                if (answer === correct) {
+                    document.getElementById("check").innerHTML = "Correct!";
+                    document.getElementById("box").style.backgroundColor = "#32de84";
+                    document.getElementById("submit").style.backgroundColor = "#32de84";
+                } else {
+                    document.getElementById("check").innerHTML = "Incorrect";
+                    document.getElementById("box").style.backgroundColor = "#E52B50";
+                    document.getElementById("submit").style.backgroundColor = "#E52B50";
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What's the oldest and continuously used national flag?</h3>
+                <button onclick = "right()" id = "right">Denmark</button>
+                <button onclick = "wrong()" id = "wrong">India</button>
+                <button onclick = "wrong2()" id = "wrong2">Saudi Arabia</button>
+                <button onclick = "wrong3()" id = "wrong3">Nepal</button>
+                <p id = "validation"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Who's the first man on the moon?</h3>
+                <input id = "box" type = "text"></input>
+                <button onclick = "submit()" id = "submit">Submit</button>
+                <p id = "check"></p>
+            </div>
+        </div>
+    </body>
+</html>

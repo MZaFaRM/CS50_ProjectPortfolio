@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <p style="font-size: 7rem">INDEX</p>
+    </div>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in details %}
+                <tr>
+                    <td>{{ data["symbol"] }}</td>
+                    <td>{{ data["name"] }}</td>
+                    <td>{{ data["shares"] }}</td>
+                    <td>{{ data["price"] | usd }}</td>
+                    <td>{{ data["total"] | usd }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan = "5" class = "lead"> No stock shares to show</td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td colspan = "3"></td>
+                    <td><b>Balance: </b></td>
+                    <td>{{ balance | usd }}</td>
+                </tr>
+                <tr>
+                    <td colspan = "3"></td>
+                    <td><b>Total: </b></td>
+                    <td>{{ total | usd }}</td>
+                </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+<!--
+delete from sqlite_sequence where name=seq;
+DELETE FROM purchase;
+DELETE FROM users;
+delete from sqlite_sequence where name=name;
+-->
